@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: MainAtlas
+  m_EditorData:
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingParameters:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: fceb854dbfa55f848b055ca849cf4d5b, type: 3}
+    - {fileID: 102900000, guid: d941d1a2bdb46fe4db60cba7aa9edc88, type: 3}
+    - {fileID: 102900000, guid: af68c0fdc1af2e147b7af13fc9108525, type: 3}
+    - {fileID: 102900000, guid: 47da4e87b8f20d744941c8ca04de0272, type: 3}
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: fe2f8357753c647428ce8928aad8d100, type: 3}
+  - {fileID: 21300000, guid: 14cae075bd8458f4fb797f429eb7c8d6, type: 3}
+  - {fileID: 21300000, guid: 5f599cb94593a58418a60858a204fc3b, type: 3}
+  - {fileID: 21300000, guid: d92c74ec8bb6e664db803ecb28c78bc4, type: 3}
+  - {fileID: 21300000, guid: 1b1f56f711302ab4d8a04eb7b9c919ec, type: 3}
+  - {fileID: 21300000, guid: ab2d561272c6b7f4da82d0558ffdc95a, type: 3}
+  - {fileID: 21300000, guid: 265c3c01424cea2429932b9315bae839, type: 3}
+  - {fileID: 21300000, guid: ee7078e123794cd43a21c1d6b148bcda, type: 3}
+  - {fileID: 21300000, guid: 6f534c4496112b9478cbfcc26971518f, type: 3}
+  - {fileID: 21300000, guid: e0085ae55b151b94a89b84d4487608e7, type: 3}
+  - {fileID: 21300000, guid: c705073e8d3a45047a22a79b012db72a, type: 3}
+  - {fileID: 21300000, guid: 19d0466d9d5042f4f9ac836a3681eb9d, type: 3}
+  - {fileID: 21300000, guid: 5c3ce7fd117c3c14c9b477c90680425c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\u043A\u043B\u044E\u0447"
+  - "\u043D\u0430\u0437\u0430\u0434 on"
+  - "\u043D\u0430\u0437\u0430\u0434 off"
+  - "\u043A\u043B\u044E\u0447 \u0432 \u043A\u0443\u0441\u0442\u0430\u0445"
+  - "\u0433\u043B\u0430\u0432\u043D\u0430\u044F \u044F\u0447\u0435\u0439\u043A\u0430"
+  - "\u043F\u0438\u0441\u044C\u043C\u043E-"
+  - 4
+  - 6
+  - 1
+  - 2
+  - "\u043A\u043E\u043D\u0432\u0435\u0440\u0442 \u0432 \u043F\u043E\u0447\u0442\u043E\u0432\u043E\u043C
+    \u044F\u0449\u0438\u043A\u0435"
+  - "\u0438\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C"
+  - "\u043E\u043A\u043D\u043E \u0434\u043B\u044F \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430"
+  m_Tag: MainAtlas
+  m_IsVariant: 0
