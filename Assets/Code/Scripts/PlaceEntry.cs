@@ -1,8 +1,7 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-sealed class PlaceEntry  : BaseInteraction/*, IMainObjectsReceiver*/
+sealed class PlaceEntry  : BaseInteraction<DelegatesCollections.DummyStruct>/*, IMainObjectsReceiver*/
 {
     /// <summary>
     /// Index of represented scene
@@ -10,6 +9,12 @@ sealed class PlaceEntry  : BaseInteraction/*, IMainObjectsReceiver*/
     [SerializeField]
     uint representedScene;
     private GameManager gameManager;
+
+    public override void Prepere(uint level)
+    {
+        //throw new System.NotImplementedException();
+    }
+
     //public void ReciveGameManager(GameManager gameManager)
     //{
     //    this.gameManager=gameManager;

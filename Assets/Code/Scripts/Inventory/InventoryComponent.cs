@@ -1,40 +1,36 @@
 ﻿using UnityEngine;
 using Interfaces;
 using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(Animation))]
-public class InventoryComponent : BaseClass, ICore
+public class InventoryComponent : BaseMonoBehaviour<DelegatesCollections.DummyStruct>, ICore
 {
     private Animation inventoryCellsAnimation;
     [SerializeField]
     MainInvCell mainCell;
-    bool slidedDown;
+    bool slidedDown=false;
     [SerializeField]
     AnimationClip[] slideAnimationClips = new AnimationClip[2];
     [SerializeField]
     Image blockingImage;
     private const string animStartTriggerName = "Slide";
 
-    public void OnAwake()
-    {
-        Prepere();
-    }
-
     public void OnStart()
     {
         PlaySlideAnimation();
     }
 
-    public void OnUpdate()
+    public void OnAwake()
     {
-        throw new System.NotImplementedException();
+        Prepere();
     }
 
     private void Prepere()
     {
         DontDestroyOnLoad(this);
 
-        blockingImage.raycastTarget=false;
+        blockingImage.raycastTarget = false;
 
         inventoryCellsAnimation = GetComponent<Animation>();
         var itemInvCells = FindObjectsOfType<ItemInvCell>();
@@ -56,6 +52,16 @@ public class InventoryComponent : BaseClass, ICore
             cell.Clear();
         }
         mainInvCell.Clear();
+    }
+
+    public void OnUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void Prepere(uint level)
+    {
+        
     }
 
 

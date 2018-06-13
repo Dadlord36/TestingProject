@@ -2,20 +2,22 @@
 
 namespace DelegatesCollections
 {
-    public delegate void OnItemPickingUp(Item item);
+    public delegate void OnItemWasPickedUp(ref uint itemId);
     public delegate bool OnItemUse(Item item);
 
 
-
-
-    public struct PickupDelegates
+    public struct ItemDelegates
     {
-        public OnItemPickingUp onPickedUp;
+        public OnItemWasPickedUp onItemWasPickedUp;
         public OnItemUse onUse;
     }
-    public struct MainObjectsDelegates
-    {
 
+    public struct DummyStruct
+    {   
     }
 
+    public struct InventoryDelegates
+    {
+        public OnItemWasPickedUp onItemWasPickedUp;
+    }
 }

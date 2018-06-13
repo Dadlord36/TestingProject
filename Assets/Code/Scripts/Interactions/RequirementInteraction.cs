@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class RequirementInteraction: BaseInteraction
+public abstract class RequirementInteraction<DelegatesCollectionType> : BaseInteraction<DelegatesCollectionType>
 {
     /// <summary>
     /// ID of item, that required to make interaction possible

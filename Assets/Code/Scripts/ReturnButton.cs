@@ -2,26 +2,44 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ReturnButton : BaseClass {
+public class ReturnButton : BaseMonoClass {
 
-	bool canReturn;
+	private bool canReturn;
 	uint sceneReturnTo;
-    [SerializeField]
-    Sprite[] buttonsSprites = new Sprite[2];
+	[SerializeField]
+	Sprite[] buttonsSprites = new Sprite[2];
 	const int sortingOrderNumber = 6;
 
 	Image buttonImage;
+	private Button actualButton;
 
-    private void Awake()
-    {
-    buttonImage = GetComponentInChildren<Image>();
-    }
-	private void Start()
+	public bool CanReturn
 	{
-        buttonImage.sprite = canReturn ? buttonsSprites[0] : buttonsSprites[1];
-    }
-    private void OnMouseDown()
+		get
+		{
+			return canReturn;
+		}
+
+		set
+		{
+			canReturn = value;
+			buttonImage.sprite = CanReturn ? buttonsSprites[0] : buttonsSprites[1];
+			actualButton.enabled= canReturn;
+		}
+	}
+
+	private void Awake()
+	{
+	buttonImage = GetComponentInChildren<Image>();
+	actualButton = GetComponent<Button>();
+	}
+	private void OnMouseDown()
 	{
 		SceneManager.LoadScene((int)sceneReturnTo);
+	}
+
+	public override void Prepere(uint level)
+	{
+		//throw new System.NotImplementedException();
 	}
 }

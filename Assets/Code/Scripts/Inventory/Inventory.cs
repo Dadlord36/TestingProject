@@ -1,13 +1,10 @@
-﻿using System;
+﻿using DelegatesCollections;
+using Interfaces.Signatures;
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void OnItemWasPickedUp(ref uint itemId);
-
-public class Inventory
+public class Inventory :BaseBehaviour<DelegatesCollections.InventoryDelegates> ,IItemSignature
 {
-    public OnItemWasPickedUp onItemWasPickedUp;
-
     public static Inventory Instance { get; } = new Inventory();
 
     List<uint> items;
@@ -19,8 +16,6 @@ public class Inventory
     public uint SelectedItemId { get; private set; }
     public bool ItemIsSelected { get; private set; }
     
-
-
     public void UseSelectedItem()
     {
         mainCell.Clear();
@@ -35,6 +30,7 @@ public class Inventory
     {
         items = new List<uint>((int)maxItems);
     }
+
     public void SetupInventory(ItemInvCell[] itemsCells, MainInvCell mainCell)
     {
         if (!settedup)
@@ -63,6 +59,7 @@ public class Inventory
         }
         itemsCells = temp;
     }
+
     internal void SelectItem(ref uint holdedItemId, ref uint cellIndex)
     {
         selectedCellIndex = cellIndex;
@@ -71,26 +68,19 @@ public class Inventory
         mainCell.SetItemToHold(ref holdedItemId);
     }
 
-    public void PickupItem(Item item)
+    public void OnItemPicked(ref uint itemId)
     {
         if (filledCells < maxItems)
         {
-            AddItem(item);
-            item.gameObject.SetActive(false);
+            items.Add(itemId);
+            itemsCells[filledCells].SetItemToHold(itemId);
             filledCells++;
-            onItemWasPickedUp(ref item.itemID);
+            delegates.onItemWasPickedUp(ref itemId);
         }
     }
 
-    private void AddItem(Item item)
+    public void SubscriveOnItemEvents(ref ItemDelegates itemDelegates)
     {
-        items.Add(item.itemID);
-        PlaceItemIconInCells(item);
+        itemDelegates.onItemWasPickedUp += OnItemPicked;
     }
-
-    void PlaceItemIconInCells(Item item)
-    {
-        itemsCells[filledCells].SetItemToHold(item.itemID);
-    }
-
 }

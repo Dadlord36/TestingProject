@@ -100,7 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68551fcd0acd6d940806b2fb70b5a0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
+  itemParameters:
+    itemId: 1
+    pickedup: 0
+    levelWherePlaced: 0
+  startActive: 0
 --- !u!212 &212044062787780824
 SpriteRenderer:
   m_ObjectHideFlags: 1
