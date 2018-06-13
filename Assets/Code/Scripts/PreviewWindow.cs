@@ -12,7 +12,7 @@ public class PreviewWindow : MonoBehaviour {
 
     public void ShowItemPreview(ref uint itemId)
     {       
-        previewPreview.sprite= GameData.instance.GetItemData(ref itemId).sprite;
+        previewPreview.sprite= GameData.Instance.GetItemData(ref itemId).sprite;
         gameObject.SetActive(true);
     }
 }

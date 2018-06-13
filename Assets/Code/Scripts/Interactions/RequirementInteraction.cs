@@ -16,7 +16,7 @@ public abstract class RequirementInteraction: BaseInteraction
     /// <returns>Binary condition</returns>
     protected bool IsAcceptRequirement()
     {
-        return Inventory.instance.ItemIsSelected && requiredItemID == Inventory.instance.SelectedItemId;
+        return Inventory.Instance.ItemIsSelected && requiredItemID == Inventory.Instance.SelectedItemId;
     }
 }
 

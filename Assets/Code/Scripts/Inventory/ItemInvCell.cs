@@ -13,7 +13,7 @@ sealed public class ItemInvCell : InvCell
     protected override void ButtonClick()
     {
         if(holdsItem)
-        Inventory.instance.SelectItem(ref holdedItemId, ref cellIndex);
+        Inventory.Instance.SelectItem(ref holdedItemId, ref cellIndex);
     }
 
     public override void SetItemToHold(ref uint itemId)

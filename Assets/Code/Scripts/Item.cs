@@ -8,7 +8,7 @@ public class Item : SpriteInteraction
     protected override void OnMouseDown()
     {
         base.OnMouseDown();
-        Inventory.instance.PickupItem(this);
+        Inventory.Instance.PickupItem(this);
         Destroy(this);
     }
 

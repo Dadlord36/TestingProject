@@ -7,8 +7,14 @@ public abstract class InvCell : MonoBehaviour
 {
     Image image;
     protected bool holdsItem;
-
     readonly Color transparentColor = new Color (0,0,0,0);
+
+    public void Prepere()
+    {
+        SubscribeOnClick(ButtonClick);
+        image = GetComponent<Image>();
+    }
+
     public virtual void Clear()
     {
         image.sprite = null;
@@ -16,17 +22,10 @@ public abstract class InvCell : MonoBehaviour
         holdsItem = false;
     }
 
-    private void Awake()
-    {
-        Button button = GetComponent<Button>();
-        button.onClick.AddListener(ButtonClick);
-        image = GetComponent<Image>();
-    }
-
     public virtual void SetItemToHold(ref uint itemId)
     {
         image.color = Color.white;
-        var itemData = GameData.instance.GetItemData(ref itemId);
+        var itemData = GameData.Instance.GetItemData(ref itemId);
         image.sprite = itemData.sprite;
         holdsItem = true;
     }
@@ -34,7 +33,11 @@ public abstract class InvCell : MonoBehaviour
     {
         SetItemToHold(ref itemId);
     }
-
+    public void SubscribeOnClick(UnityEngine.Events.UnityAction action )
+    {
+        Button button = GetComponent<Button>();
+        button.onClick.AddListener(action);
+    }
 
     protected abstract void ButtonClick();
 

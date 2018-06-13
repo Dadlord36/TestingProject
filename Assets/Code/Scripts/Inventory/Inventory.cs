@@ -7,27 +7,18 @@ public delegate void OnItemWasPickedUp(ref uint itemId);
 public class Inventory
 {
     public OnItemWasPickedUp onItemWasPickedUp;
-   
-    public static Inventory instance;
+
+    public static Inventory Instance { get; } = new Inventory();
+
     List<uint> items;
     ItemInvCell[] itemsCells = new ItemInvCell[maxItems];
-    readonly MainInvCell mainCell;
+    MainInvCell mainCell;
     GameData previewWindow;
-    public uint SelectedItemId { get { return selectedItemId; } }
-    uint selectedItemId;
-
     uint selectedCellIndex;
-
-    public bool ItemIsSelected
-    {
-        get
-        {
-            return itemIsSelected;
-        }
-    }
-
- 
-    bool itemIsSelected;
+    bool settedup;
+    public uint SelectedItemId { get; private set; }
+    public bool ItemIsSelected { get; private set; }
+    
 
 
     public void UseSelectedItem()
@@ -40,13 +31,27 @@ public class Inventory
     const uint maxItems = 7;
     uint filledCells;
 
-    public Inventory(ItemInvCell[] itemsCells, MainInvCell mainCell)
+    Inventory()
     {
-        this.itemsCells = itemsCells;
-        SortCells();
-        this.mainCell = mainCell;
         items = new List<uint>((int)maxItems);
-        instance = this;
+    }
+    public void SetupInventory(ItemInvCell[] itemsCells, MainInvCell mainCell)
+    {
+        if (!settedup)
+        {
+            this.itemsCells = itemsCells;
+            foreach (var cell in itemsCells)
+            {
+                cell.Prepere();
+            }
+            SortCells();
+            this.mainCell = mainCell;
+            mainCell.Prepere();
+        }
+        else
+        {
+            Debug.Log("Inventory is already setts");
+        }
     }
 
     private void SortCells()
@@ -57,13 +62,12 @@ public class Inventory
             temp[(int)itemsCells[i].CellIndex]= itemsCells[i];
         }
         itemsCells = temp;
-
     }
     internal void SelectItem(ref uint holdedItemId, ref uint cellIndex)
     {
         selectedCellIndex = cellIndex;
-        selectedItemId = holdedItemId;
-        itemIsSelected = true;
+        SelectedItemId = holdedItemId;
+        ItemIsSelected = true;
         mainCell.SetItemToHold(ref holdedItemId);
     }
 

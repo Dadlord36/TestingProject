@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class GameData
 {
-    public static GameData instance;
     Items itemsData;
-    public GameData()
+    private GameData()
     {
         itemsData = Resources.Load<Items>("ItemsData") as Items;
         if (itemsData != null)
@@ -15,8 +14,10 @@ public class GameData
             Debug.Log("Data was NOT loaded");
 
         }
-        instance = this;
+        Instance = this;
     }
+
+    public static GameData Instance { get;private set; } = new GameData();
 
     public ItemData GetItemData(ref uint itemId)
     {

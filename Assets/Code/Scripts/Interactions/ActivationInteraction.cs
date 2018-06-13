@@ -16,7 +16,7 @@ sealed public class ActivationInteraction : RequirementInteraction
             {
                 SwitchChildActiveEnable(true);
                 polyCollider.enabled = false;
-                Inventory.instance.UseSelectedItem();
+                Inventory.Instance.UseSelectedItem();
             }
         }
     }

@@ -1,5 +1,4 @@
 ﻿
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,28 +12,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        var baseObjects = FindObjectsOfType<BaseClass>();
+        foreach (var item in baseObjects)
+        {
+            if (item is Interfaces.ICore)
+                (item as Interfaces.ICore).OnAwake();
+        }
         DontDestroyOnLoad(this);
-        SceneManager.sceneLoaded += OnSceneWasLoaded;
-        new GameData();
     }
     private void Start()
     {
+        var baseObjects = FindObjectsOfType<BaseClass>();
+        foreach (var item in baseObjects)
+        {
+            if (item is Interfaces.ICore)
+                (item as Interfaces.ICore).OnStart();
+        }
         SceneManager.LoadScene((int)beginScene);
-        Inventory.instance.onItemWasPickedUp += ItemWasPickedUp;
-
+        Inventory.Instance.onItemWasPickedUp += ItemWasPickedUp;
     }
 
     private void ItemWasPickedUp(ref uint itemId)
     {
         previewWindow.ShowItemPreview(ref itemId);
     }
-
-    private void OnSceneWasLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-
-    }
-
-
-
-
 }
